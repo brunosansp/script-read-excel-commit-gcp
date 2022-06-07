@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@google-cloud/firestore": "^5.0.2",
+    "convert-excel-to-json": "^1.7.0",
+    "uuidv4": "^6.2.13"
+  }
+}
