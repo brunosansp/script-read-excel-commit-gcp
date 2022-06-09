@@ -1,7 +1,7 @@
 'use strict'
-import { Firestore } from '@google-cloud/firestore';
-import { v4 } from 'uuid';
-import excelToJson from 'convert-excel-to-json';
+const { Firestore } = require('@google-cloud/firestore');
+const { v4 } = require('uuid');
+const excelToJson = require('convert-excel-to-json');
 
 const db = new Firestore();
 
@@ -11,7 +11,7 @@ const textTitleCase = (text) => {
   return text
     .toLowerCase()
     .split(' ')
-    .map(word => word === 'xbox' ? 'XBOX' : word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word === 'x/s' ? 'X/S' : word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
 
@@ -25,7 +25,7 @@ async function main() {
     const uuid = v4();
     const data = {
       productId: uuid,
-      name: product,
+      productName: product,
       description: `Console ${product}`,
       price: `R$ ${(result.C).toFixed(2)}`,
       available: result.D === 'S' ? true : false,
